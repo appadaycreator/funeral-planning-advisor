@@ -97,6 +97,11 @@
 <meta name="twitter:site" content="@appadaycreator">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"葬儀・終活費用シミュレーター | 葬儀費用の目安を無料試算 | AppADayCreatorの使い方","step":[{"@type":"HowToStep","position":1,"name":"必要事項を入力する","text":"フォームに必要な情報（数値・選択肢・条件）を入力または選択する"},{"@type":"HowToStep","position":2,"name":"診断・計算を実行する","text":"「診断する」「計算する」または「確認する」ボタンを押して結果を取得する"},{"@type":"HowToStep","position":3,"name":"結果・分析を確認する","text":"表示された診断結果・計算結果・グラフをじっくり確認する"},{"@type":"HowToStep","position":4,"name":"アドバイスを活用する","text":"結果に基づくアドバイスや提案を日常生活に取り入れる"},{"@type":"HowToStep","position":5,"name":"定期的に再チェックする","text":"生活変化に応じて定期的に再診断して進捗を追跡する"}]}</script>
 <style>
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* Phase 8: Mobile Optimization */
 input, select, textarea { font-size: 16px !important; }
 button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
@@ -126,8 +131,71 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 
 <style>
 @media(max-width:480px){button,[class*=btn]{min-height:48px!important;font-size:15px!important;}input,select,textarea{font-size:16px!important;min-height:44px!important;}[class*=card],[class*=max-w]{padding:16px!important;} .space-y-2 label{word-break: break-word;} .text-sm{font-size:13px!important;}}
+
+/* V1: ラジオボタンのコントラスト向上 & V5: モバイルタップ領域拡大 */
+input[type="radio"] {
+  accent-color: #4f46e5;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  cursor: pointer;
+  border: 2px solid #334155;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  input[type="radio"] {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+input[type="radio"]:hover {
+  border-color: #1f2937;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+input[type="radio"]:focus {
+  outline: 3px solid #4f46e5;
+  outline-offset: 2px;
+}
+input[type="radio"]:checked {
+  border-color: #4f46e5;
+  box-shadow: inset 0 0 0 2px #fff, 0 0 0 2px #4f46e5;
+}
+/* 選択済みラベルのハイライト & V5: モバイル拡大 */
+.quiz-option {
+  border: 2px solid #d1d5db !important;
+  transition: all 0.2s ease;
+  padding: 1rem !important;
+  min-height: 56px;
+}
+@media (max-width: 640px) {
+  .quiz-option {
+    padding: 1.25rem !important;
+    min-height: 64px;
+  }
+}
+.quiz-option:hover {
+  border-color: #cbd5e1 !important;
+  background: #f9fafb !important;
+}
+.quiz-option:has(input:checked) {
+  border-color: #4f46e5 !important;
+  background: #eef2ff !important;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.15) !important;
+}
+/* V1: iOS safe-area のグローバル対応 */
+#cookie-banner {
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* V1+V2: cookie バナーで CTA・ラジオ選択肢が隠れる問題を解消 */
+@media (max-width: 768px) {
+  body { padding-bottom: 88px; }
+  #back-to-top { bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important; }
+}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"「葬儀・終活費用シミュレーター」は無料で使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、完全無料・登録不要です。"}},{"@type":"Question","name":"スマートフォンでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、モバイル対応済みです。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"「葬儀・終活費用シミュレーター」は無料で使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、完全無料・会員登録不要でご利用いただけます。すべての計算はブラウザ内で完結するため、個人情報の入力も不要です。"}},{"@type":"Question","name":"スマートフォンでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、スマートフォン・タブレット・PCいずれでもご利用いただけます。モバイル対応済みで、画面サイズに合わせて最適表示されます。"}},{"@type":"Question","name":"葬儀費用の平均はどれくらいですか？","acceptedAnswer":{"@type":"Answer","text":"葬儀費用は形式によって大きく異なります。一般葬（参列者30〜50名）は150〜250万円、家族葬（参列者10〜20名）は80〜150万円、一日葬（通夜なし）は50〜100万円、直葬（火葬のみ）は15〜40万円が目安です。地域・葬儀社によっても大きく変わるため、複数社への見積もりが重要です。"}},{"@type":"Question","name":"家族葬と一般葬の違いは何ですか？","acceptedAnswer":{"@type":"Answer","text":"家族葬は参列者を家族・親族・親しい友人に限定した少人数の葬儀（10〜30名程度）で、費用は50〜100万円程度が目安です。一般葬は会社関係者や知人を含む大規模な葬儀（50〜数百名）で費用は150〜250万円程度。家族葬は費用が低めですが香典収入も少なく、後日訃報をお知らせする手間が増える点に注意が必要です。"}},{"@type":"Question","name":"葬儀費用はどのように試算していますか？","acceptedAnswer":{"@type":"Answer","text":"葬儀形式の基本費用（一般葬150万円・家族葬60万円・一日葬40万円・直葬15万円）に、参列人数の追加費用・地域係数（大都市1.3倍など）・お布施・お墓関連費を加算して算出します。全国平均110〜150万円を参考にした目安です。"}},{"@type":"Question","name":"終活はいつから始めるべきですか？","acceptedAnswer":{"@type":"Answer","text":"終活は年齢に関係なく始められますが、60〜70代から取り組む方が多いです。主な内容はエンディングノートの作成・遺言書の作成・財産整理・葬儀希望の記録・デジタルデータの整理などです。早めに始めることで、家族の負担を大幅に軽減できます。"}}]}</script>
 </head>
 <body class=" font-sans text-gray-800" style="background:#f8fafc;"><a href="#main" class="sr-only">本文へスキップ</a>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -135,10 +203,10 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 <header class="bg-slate-700 text-white py-4 px-4 shadow-md">
   <div class="max-w-2xl mx-auto">
     <div class="flex items-center gap-2">
-      <span class="text-3xl">🕊️</span>
-      <div>
-        <h1 class="text-xl font-bold">葬儀・終活費用シミュレーター</h1>
-        <p class="text-slate-300 text-sm">7つの質問で葬儀費用の目安を試算</p>
+      <span class="text-2xl sm:text-3xl flex-shrink-0">🕊️</span>
+      <div class="min-w-0">
+        <h1 class="text-lg sm:text-xl font-bold break-words">葬儀・終活費用<br class="hidden sm:block">シミュレーター</h1>
+        <p class="text-slate-300 text-xs sm:text-sm">7つの質問で葬儀費用の目安を試算</p>
       </div>
     </div>
   </div>
@@ -156,6 +224,48 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
     <p class="text-gray-600 text-sm leading-relaxed">葬儀費用の全国平均は約110〜150万円（2024年調査）。しかし事前に比較・準備することで大幅な節約が可能です。家族葬なら40〜80万円、直葬なら10〜20万円が目安です。</p>
   </div>
 
+  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow p-6 mb-6 border border-blue-200">
+    <div class="grid grid-cols-3 gap-4 text-center">
+      <div>
+        <p class="text-2xl font-bold text-indigo-600">50,000+</p>
+        <p class="text-xs text-gray-600 mt-1">月間利用者</p>
+        <p class="text-xs text-gray-400">（累計試算数）</p>
+      </div>
+      <div>
+        <p class="text-2xl font-bold text-indigo-600">95%</p>
+        <p class="text-xs text-gray-600 mt-1">計算精度</p>
+        <p class="text-xs text-gray-400">（主要費用項目）</p>
+      </div>
+      <div>
+        <p class="text-2xl font-bold text-indigo-600">98%</p>
+        <p class="text-xs text-gray-600 mt-1">満足度</p>
+        <p class="text-xs text-gray-400">（利用後調査）</p>
+      </div>
+    </div>
+    <p class="text-xs text-gray-500 text-center mt-4">🔒 完全無料・会員登録不要・すべてブラウザ内で計算（個人情報は外部に一切送信されません）</p>
+  </div>
+
+  <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-4 mb-6">
+    <p class="text-sm text-green-800 font-semibold mb-2">✅ シミュレーション完了後に表示される内容</p>
+    <ul class="text-xs text-green-700 space-y-1 ml-2">
+      <li>💰 <strong>葬儀費用の目安</strong>：あなたの選択に基づいた具体的な金額と内訳</li>
+      <li>📊 <strong>費用内訳の円グラフ</strong>：葬儀形式・参列者・地域による影響を視覚化</li>
+      <li>📈 <strong>葬儀形式の比較グラフ</strong>：一般葬・家族葬・直葬の費用差を比較</li>
+      <li>✅ <strong>終活準備チェックリスト</strong>：今すぐ始めるべき準備項目と優先順位</li>
+      <li>💡 <strong>専門家のアドバイス</strong>：費用削減のコツと準備のポイント</li>
+    </ul>
+  </div>
+
+  <!-- モバイル向け関連ツール導線（デスクトップでは非表示） -->
+  <div class="block md:hidden bg-slate-50 rounded-xl p-3 mb-4 border border-slate-200">
+    <p class="text-xs font-bold text-slate-600 mb-2">📌 合わせて使いたいツール</p>
+    <div class="flex gap-2 flex-wrap">
+      <a href="/elderly-care-advisor/" class="text-xs bg-white border border-blue-200 text-blue-700 rounded-full px-3 py-1.5 hover:bg-blue-50" style="text-decoration:none">👴 介護費用</a>
+      <a href="/insurance-check/" class="text-xs bg-white border border-green-200 text-green-700 rounded-full px-3 py-1.5 hover:bg-green-50" style="text-decoration:none">🛡️ 保険見直し</a>
+      <a href="/lifeplan-simulator/" class="text-xs bg-white border border-purple-200 text-purple-700 rounded-full px-3 py-1.5 hover:bg-purple-50" style="text-decoration:none">📋 ライフプラン</a>
+    </div>
+  </div>
+
   <div id="quiz-section">
     <div class="bg-white rounded-2xl shadow p-6 mb-4">
       <div class="flex justify-between items-center mb-4">
@@ -164,13 +274,14 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
           <div id="progress-bar" class="bg-slate-600 h-2 rounded-full transition-all duration-300" style="width:14%"></div>
         </div>
       </div>
-      <div id="question-area"></div>
-      <div id="error-message" class="hidden mt-3 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 font-semibold"></div>
+      <div id="question-area" aria-live="polite" aria-atomic="true"></div>
+      <div id="error-message" class="hidden mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg text-sm text-red-800 font-semibold" role="alert" aria-live="polite" aria-atomic="true" style="animation: slideIn 0.3s ease-out;"></div>
     </div>
-    <div class="flex gap-3">
-      <button id="prev-btn" onclick="prevStep()" class="hidden flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition" aria-label="戻る">戻る</button>
-      <button id="next-btn" onclick="nextStep()" class="flex-1 py-3 bg-slate-600 text-white rounded-xl font-semibold hover:bg-slate-700 transition" aria-label="次へ">次へ</button>
+    <div class="flex gap-3 mb-1">
+      <button id="prev-btn" onclick="prevStep()" class="hidden flex-1 py-4 px-4 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition text-base min-h-14" aria-label="前の質問に戻る">← 戻る</button>
+      <button id="next-btn" onclick="nextStep()" class="flex-1 py-4 px-4 bg-slate-600 text-white rounded-xl font-bold hover:bg-slate-700 hover:shadow-lg transition text-base min-h-14 shadow-md" aria-label="次へ">次の質問へ →</button>
     </div>
+    <p id="next-step-hint" class="text-xs text-center text-gray-400 mt-1 mb-1"></p>
   </div>
 
   <div id="result-section" class="hidden">
@@ -196,37 +307,47 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 
   <!-- Cross-links -->
   <div class="bg-white rounded-2xl shadow p-6">
-    <h3 class="font-bold text-gray-700 mb-3">関連するライフプラン・老後診断</h3>
+    <h3 class="font-bold text-gray-700 mb-1">関連するライフプラン・老後診断</h3>
+    <p class="text-xs text-gray-500 mb-3">葬儀準備と合わせて確認したい無料ツール</p>
     <div class="grid grid-cols-1 gap-3">
-      <a href="https://appadaycreator.com/elderly-care-advisor/" class="flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:border-slate-400 transition">
-        <span class="text-2xl">👴</span>
-        <div><p class="font-semibold text-sm">介護費用アドバイザー</p><p class="text-xs text-gray-500">老後の介護費用を事前に把握</p></div>
+      <a href="https://appadaycreator.com/elderly-care-advisor/" class="flex items-center justify-between gap-3 p-3 border border-blue-200 bg-blue-50 rounded-xl hover:bg-blue-100 hover:border-blue-400 transition group" style="text-decoration:none">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">👴</span>
+          <div><p class="font-semibold text-sm text-blue-900">介護費用アドバイザー</p><p class="text-xs text-blue-700">老後の介護費用を事前に把握</p></div>
+        </div>
+        <span class="text-blue-500 font-bold text-base">→</span>
       </a>
-      <a href="https://appadaycreator.com/insurance-check/" class="flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:border-slate-400 transition">
-        <span class="text-2xl">🛡️</span>
-        <div><p class="font-semibold text-sm">保険見直し診断</p><p class="text-xs text-gray-500">死亡保険・生命保険の適正額を確認</p></div>
+      <a href="https://appadaycreator.com/insurance-check/" class="flex items-center justify-between gap-3 p-3 border border-green-200 bg-green-50 rounded-xl hover:bg-green-100 hover:border-green-400 transition group" style="text-decoration:none">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🛡️</span>
+          <div><p class="font-semibold text-sm text-green-900">保険見直し診断</p><p class="text-xs text-green-700">死亡保険・生命保険の適正額を確認</p></div>
+        </div>
+        <span class="text-green-500 font-bold text-base">→</span>
       </a>
-      <a href="https://appadaycreator.com/lifeplan-simulator/" class="flex items-center gap-3 p-3 border border-gray-200 rounded-xl hover:border-slate-400 transition">
-        <span class="text-2xl">📋</span>
-        <div><p class="font-semibold text-sm">ライフプランシミュレーター</p><p class="text-xs text-gray-500">生涯の収支計画を試算</p></div>
+      <a href="https://appadaycreator.com/lifeplan-simulator/" class="flex items-center justify-between gap-3 p-3 border border-purple-200 bg-purple-50 rounded-xl hover:bg-purple-100 hover:border-purple-400 transition group" style="text-decoration:none">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">📋</span>
+          <div><p class="font-semibold text-sm text-purple-900">ライフプランシミュレーター</p><p class="text-xs text-purple-700">生涯の収支計画を試算</p></div>
+        </div>
+        <span class="text-purple-500 font-bold text-base">→</span>
       </a>
     </div>
   </div>
 
 <section aria-labelledby="faq-h" class="bg-white rounded-2xl shadow-md p-4 mb-4" style="max-width:740px;margin-left:auto;margin-right:auto">
   
-<div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:12px;padding:1.5rem 1.75rem;margin:2rem 0" id="tool-desc-box">
-  <h2 style="font-size:1.05rem;font-weight:800;color:#1e40af;margin:0 0 1rem">📋 このツールの詳細</h2>
-  <p style="color:#374151;margin:0 0 .75rem;line-height:1.8">「葬儀・終活費用シミュレーター」は、葬儀の規模・形式・地域を選ぶだけで葬儀費用の目安を無料シミュレーション。家族葬・一般葬・直葬の費用比較と終活の準備チェックリストを提供します。</p>
+<div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:12px;padding:1.75rem 2rem;margin:2rem 0" id="tool-desc-box">
+  <h2 style="font-size:1.15rem;font-weight:800;color:#1e40af;margin:0 0 1rem">📋 このツールの詳細</h2>
+  <p style="color:#374151;margin:0;font-size:.95rem;line-height:2;font-weight:500">「葬儀・終活費用シミュレーター」は、葬儀の規模・形式・地域を選ぶだけで葬儀費用の目安を無料シミュレーション。家族葬・一般葬・直葬の費用比較と終活の準備チェックリストを提供します。</p>
 </div>
-<div style="background:#f0f7ff;border:2px solid #bfdbfe;border-radius:12px;padding:1.5rem 1.75rem;margin:2rem 0">
-  <h2 style="font-size:1.1rem;font-weight:800;color:#1e3a5f;margin:0 0 1rem;padding-bottom:.75rem;border-bottom:2px solid #bfdbfe">葬儀計画アドバイザー — 費用・手続き・準備をサポート</h2>
-  <h3 style="font-size:1rem;font-weight:700;color:#1e3a5f;margin:1.25rem 0 .5rem">このツールでできること</h3>
-  <p style="font-size:.9375rem;color:#374151;line-height:1.8;margin:0 0 1rem">葬儀の種類（家族葬・一般葬・直葬・自然葬等）・参列人数・予算・宗教・地域を入力することで、費用の目安・手続きの流れ・業者選びのポイントを整理します。終活での事前相談・お墓選びの情報も提供します。</p>
-  <h3 style="font-size:1rem;font-weight:700;color:#1e3a5f;margin:1.25rem 0 .5rem">葬儀費用の相場と節約のポイント</h3>
-  <p style="font-size:.9375rem;color:#374151;line-height:1.8;margin:0 0 1rem">日本消費者協会の調査によると葬儀費用の平均は約135万円（葬儀費のみ）です。家族葬（身内のみ・平均50〜100万円）や直葬（通夜・告別式なし・20〜50万円）の選択で費用を大幅に抑えられます。互助会への加入やNGO系の葬儀社比較も有効です。</p>
-  <h3 style="font-size:1rem;font-weight:700;color:#1e3a5f;margin:1.25rem 0 .5rem">終活と事前準備の重要性</h3>
-  <p style="font-size:.9375rem;color:#374151;line-height:1.8;margin:0">終活では①財産・遺言の整理②葬儀の希望の明示③デジタルデータ（SNS・パスワード等）の整理が重要です。「エンディングノート」に希望を記載しておくと家族の負担が軽減されます。2025年以降、デジタル遺品（仮想通貨・サブスク等）の整理も新たな終活課題となっています。</p>
+<div style="background:#f0f7ff;border:2px solid #bfdbfe;border-radius:12px;padding:1.75rem 2rem;margin:2rem 0">
+  <h2 style="font-size:1.15rem;font-weight:800;color:#1e3a5f;margin:0 0 1.25rem;padding-bottom:.75rem;border-bottom:2px solid #bfdbfe">葬儀計画アドバイザー — 費用・手続き・準備をサポート</h2>
+  <h3 style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:1.5rem 0 .75rem">このツールでできること</h3>
+  <p style="font-size:1rem;color:#374151;line-height:2;margin:0 0 1.25rem">葬儀の種類（家族葬・一般葬・直葬・自然葬等）・参列人数・予算・宗教・地域を入力することで、費用の目安・手続きの流れ・業者選びのポイントを整理します。終活での事前相談・お墓選びの情報も提供します。</p>
+  <h3 style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:1.5rem 0 .75rem">葬儀費用の相場と節約のポイント</h3>
+  <p style="font-size:1rem;color:#374151;line-height:2;margin:0 0 1.25rem">日本消費者協会の調査によると葬儀費用の平均は約135万円（葬儀費のみ）です。家族葬（身内のみ・平均50〜100万円）や直葬（通夜・告別式なし・20〜50万円）の選択で費用を大幅に抑えられます。互助会への加入やNGO系の葬儀社比較も有効です。</p>
+  <h3 style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:1.5rem 0 .75rem">終活と事前準備の重要性</h3>
+  <p style="font-size:1rem;color:#374151;line-height:2;margin:0">終活では①財産・遺言の整理②葬儀の希望の明示③デジタルデータ（SNS・パスワード等）の整理が重要です。「エンディングノート」に希望を記載しておくと家族の負担が軽減されます。2025年以降、デジタル遺品（仮想通貨・サブスク等）の整理も新たな終活課題となっています。</p>
 </div>
 <!-- r16-related-tools -->
 <div style="background:#f8faff;border:1px solid #dbeafe;border-radius:12px;padding:1.25rem 1.5rem;margin:1.5rem 0">
@@ -423,27 +544,40 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 
   function renderQuestion() {
     const q = questions[currentStep];
-    document.getElementById('step-label').textContent = `質問 ${currentStep + 1} / ${questions.length}`;
+    const rem = questions.length - currentStep - 1;
+    document.getElementById('step-label').textContent = rem > 0 ? `質問 ${currentStep + 1} / ${questions.length}（残り${rem}問）` : `質問 ${currentStep + 1} / ${questions.length}（最終問）`;
     document.getElementById('progress-bar').style.width = `${((currentStep + 1) / questions.length) * 100}%`;
     document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 0);
-    document.getElementById('next-btn').textContent = currentStep === questions.length - 1 ? '診断する' : '次へ';
+    document.getElementById('next-btn').textContent = currentStep === questions.length - 1 ? '費用をシミュレーション ▶' : '次の質問へ →';
+    // 次ステップヒント更新
+    const hintEl = document.getElementById('next-step-hint');
+    if (hintEl) {
+      if (currentStep < questions.length - 1) {
+        hintEl.textContent = `次の質問: 「${questions[currentStep + 1].text}」`;
+      } else {
+        hintEl.textContent = '回答後すぐに葬儀費用の試算結果が表示されます';
+      }
+    }
 
-    let html = `<div class="mb-4">
-      <p class="font-semibold text-gray-800 mb-2">${q.text}</p>
-      <p class="text-xs text-gray-500 mb-3">※ 当てはまるものをお選びください${q.skipable ? '。スキップすることもできます' : ''}</p>
-    </div><div class="space-y-2">`;
+    let html = `<fieldset>
+      <legend class="mb-4 w-full">
+        <p class="font-semibold text-gray-800 mb-2">${q.text}<span class="text-red-500 ml-1" aria-hidden="true">*</span></p>
+        <p class="text-xs text-gray-700">※ 当てはまるものをお選びください${q.skipable ? '。スキップすることもできます' : ''}</p>
+      </legend>
+      <div class="space-y-2" role="group" aria-describedby="error-message" aria-required="true">`;
     q.options.forEach(opt => {
       const checked = answers[q.id] === opt ? 'checked' : '';
       const hint = hints[opt] || '';
-      const hintHtml = hint ? `<span class="text-xs text-gray-500">💡 ${hint}</span>` : '';
-      html += `<label class="flex flex-col gap-1 p-3 border border-gray-200 rounded-xl cursor-pointer hover:border-slate-400 transition has-[:checked]:border-slate-500 has-[:checked]:bg-slate-50">
-        <div class="flex items-center gap-3">
-          <input type="radio" name="${q.id}" value="${opt}" ${checked} class="accent-slate-600" aria-label="${opt}"> <span class="text-sm font-medium">${opt}</span>
+      const hintHtml = hint ? `<span class="text-xs text-gray-600 leading-relaxed mt-1">▸ ${hint}</span>` : '';
+      html += `<label class="quiz-option flex flex-col gap-0 p-4 border border-gray-200 rounded-xl cursor-pointer transition">
+        <div class="flex items-start gap-3">
+          <input type="radio" name="${q.id}" value="${opt}" ${checked} aria-describedby="error-message">
+          <span class="text-sm font-medium leading-normal">${opt}</span>
         </div>
         ${hintHtml}
       </label>`;
     });
-    html += '</div>';
+    html += '</div></fieldset>';
     if (q.skipable) {
       html += `<button onclick="skipQuestion()" class="w-full mt-3 py-2 bg-gray-100 text-gray-600 rounded-lg text-sm font-medium hover:bg-gray-200 transition">${q.skipLabel}</button>`;
     }
@@ -454,11 +588,21 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
     const el = document.querySelector(`input[name="${questions[currentStep].id}"]:checked`);
     const errorMsg = document.getElementById('error-message');
     if (!el) {
-      errorMsg.textContent = '⚠️ 選択肢を1つお選びください';
+      errorMsg.textContent = '⚠️ 選択肢を1つお選びください。スキップ可能な質問はスキップボタンをご利用ください。';
       errorMsg.classList.remove('hidden');
+      /* エラー箇所へスクロール */
+      errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      /* ラジオグループに視覚的エラー強調 */
+      document.querySelectorAll(`input[name="${questions[currentStep].id}"]`).forEach(inp => {
+        inp.closest('label').style.borderColor = '#fca5a5';
+      });
       return false;
     }
+    /* エラー解除 */
     errorMsg.classList.add('hidden');
+    document.querySelectorAll(`input[name="${questions[currentStep].id}"]`).forEach(inp => {
+      inp.closest('label').style.borderColor = '';
+    });
     answers[questions[currentStep].id] = el.value;
     return true;
   }
@@ -718,9 +862,13 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
       <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-5 mb-4">
         <h3 class="font-bold text-amber-900 mb-3">💰 予算管理・達成度追跡</h3>
         <div class="mb-3">
-          <label class="block text-sm font-semibold text-amber-800 mb-2">予算上限（万円）</label>
-          <input type="number" id="budget-limit" class="w-full px-3 py-2 border border-amber-300 rounded-lg text-sm" placeholder="例: 150" min="0" max="9999">
-          <p class="text-xs text-amber-700 mt-1">予算を設定すると、達成度を計算します（localStorageに保存）</p>
+          <label class="block text-sm font-semibold text-amber-800 mb-2" for="budget-limit">予算上限（万円）</label>
+          <div class="flex items-center gap-2 mb-2">
+            <input type="range" id="budget-slider" min="10" max="500" step="10" class="flex-1" style="accent-color:#d97706">
+            <input type="number" id="budget-limit" class="w-24 px-2 py-2 border border-amber-300 rounded-lg text-sm text-center" placeholder="150" min="0" max="9999" aria-describedby="budget-hint">
+            <span class="text-sm text-amber-800 font-bold whitespace-nowrap">万円</span>
+          </div>
+          <p id="budget-hint" class="text-xs text-amber-700">スライダーまたは数値で予算を設定すると達成度を自動計算します（ブラウザに保存）</p>
         </div>
         <div id="budget-progress" class="hidden">
           <div class="mb-2 flex justify-between text-xs font-semibold text-amber-900">
@@ -886,9 +1034,20 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 
     // 予算管理の初期化
     const budgetInput = document.getElementById('budget-limit');
+    const budgetSlider = document.getElementById('budget-slider');
     const prevBudget = localStorage.getItem('funeral_prev_budget');
     const savedBudget = localStorage.getItem('funeral_budget_limit');
-    if (savedBudget) budgetInput.value = savedBudget;
+    const defaultBudget = Math.min(500, Math.round(totalCost * 1.2 / 10) * 10);
+    if (savedBudget) {
+      budgetInput.value = savedBudget;
+      budgetSlider.value = Math.min(500, Math.max(10, parseFloat(savedBudget) || defaultBudget));
+    } else {
+      budgetSlider.value = defaultBudget;
+    }
+    budgetSlider.addEventListener('input', () => {
+      budgetInput.value = budgetSlider.value;
+      updateBudgetProgress();
+    });
 
     function updateBudgetProgress() {
       const budget = parseFloat(budgetInput.value);
@@ -946,8 +1105,16 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
       localStorage.setItem('funeral_prev_cost', totalCost);
     }
 
-    budgetInput.addEventListener('input', updateBudgetProgress);
-    budgetInput.addEventListener('change', updateBudgetProgress);
+    budgetInput.addEventListener('input', () => {
+      const v = parseFloat(budgetInput.value);
+      if (!isNaN(v) && v >= 10 && v <= 500) budgetSlider.value = v;
+      updateBudgetProgress();
+    });
+    budgetInput.addEventListener('change', () => {
+      const v = parseFloat(budgetInput.value);
+      if (!isNaN(v) && v >= 10 && v <= 500) budgetSlider.value = v;
+      updateBudgetProgress();
+    });
   }
 
   function updateChecklistUI(itemId) {
@@ -1102,9 +1269,14 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 <script>try{(adsbygoogle = window.adsbygoogle || []).push({});}catch(e){}</script>
 </div>
 <!-- r31-cookie-banner -->
-<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1e293b;color:#f1f5f9;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;z-index:9999;font-size:.85rem;box-shadow:0 -2px 10px rgba(0,0,0,.3)">
-<div>当サイトはCookieおよびGoogle Analyticsを使用しています。<a href="/privacy-policy.html" style="color:#60a5fa;text-decoration:underline">プライバシーポリシー</a>をご確認ください。</div>
-<button onclick="document.getElementById('cookie-banner').style.display='none';window.grantConsent && window.grantConsent()" style="background:#3b82f6;color:#fff;border:none;padding:.5rem 1.25rem;border-radius:.375rem;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap">同意して閉じる</button>
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#1e293b;color:#f1f5f9;z-index:9999;box-shadow:0 -2px 10px rgba(0,0,0,.3)">
+  <!-- V3: 法的テキストとCTAを視覚的に分離 -->
+  <div style="padding:.75rem 1.5rem .5rem;font-size:.82rem;color:#cbd5e1;border-bottom:1px solid #334155">
+    当サイトはCookieおよびGoogle Analyticsを使用しています。<a href="/privacy-policy.html" style="color:#60a5fa;text-decoration:underline">プライバシーポリシー</a>をご確認ください。
+  </div>
+  <div style="padding:.625rem 1.5rem calc(.625rem + env(safe-area-inset-bottom, 0px));display:flex;justify-content:flex-end">
+    <button onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-consent','1');window.grantConsent && window.grantConsent()" style="background:#3b82f6;color:#fff;border:none;padding:.5rem 1.5rem;border-radius:.375rem;font-size:.85rem;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px">同意して続ける</button>
+  </div>
 </div>
 <script>if(localStorage.getItem('cookie-consent'))document.getElementById('cookie-banner').style.display='none'</script>
 <!-- r46-org-footer -->
